@@ -90,13 +90,14 @@ object Execute {
     }
     case If(guard, branchStatement, elseStatement) => {
       var gvalue = apply(store)(guard)
-      if(gvalue.get.isLeft){
+      println(gvalue)
+      if(gvalue.get.isRight || gvalue.get.left.get != 0){
         apply(store)(branchStatement)
       }
       else{
+        Cell.NULL
         apply(store)(elseStatement)
       }
-      Cell.NULL
       
     }
     case New(Clazz(zuper, fields, methods)) => {
