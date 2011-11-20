@@ -59,12 +59,18 @@ case class Instance(zuper: Option[Instance], fields: Map[String, Cell], methods:
         case None => Cell.NULL
       }
     }
-  // TODO: your job: replace this result with a meaningful field lookup
   }
 
-  def getScopedMethod(name: String): ScopedMethod =
-  // TODO: your job: replace this result with a meaningful method lookup
-	(Instance(None, Map(), Map()), (Seq(), Constant(0)))
+  def getScopedMethod(name: String): ScopedMethod = {
+    val findMethod = methods.get(name)
+    findMethod match {
+      case Some(m: Method) => (this,m) 
+      case None => zuper match {
+        case Some(i: Instance) => i.getScopedMethod(name)
+        case None => (Instance(None, Map(), Map()), (Seq(), Constant(0)))
+      }
+    }
+  }
 }
 
 /**
