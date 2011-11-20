@@ -50,9 +50,17 @@ case class Instance(zuper: Option[Instance], fields: Map[String, Cell], methods:
   require(methods != null)
   require(! methods.contains(null))
 
-  def getField(name: String): Cell =
+  def getField(name: String): Cell = {
+    val findField = fields.get(name)
+    findField match {
+      case Some(x: Cell) => x
+      case None => zuper match {
+        case Some(i: Instance) => i.getField(name)
+        case None => Cell.NULL
+      }
+    }
   // TODO: your job: replace this result with a meaningful field lookup
-	Cell(0)
+  }
 
   def getScopedMethod(name: String): ScopedMethod =
   // TODO: your job: replace this result with a meaningful method lookup
