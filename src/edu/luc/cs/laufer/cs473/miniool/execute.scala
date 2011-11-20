@@ -90,7 +90,6 @@ object Execute {
     }
     case If(guard, branchStatement, elseStatement) => {
       var gvalue = apply(store)(guard)
-      println(gvalue)
       if(gvalue.get.isRight || gvalue.get.left.get != 0){
         apply(store)(branchStatement)
       }

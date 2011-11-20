@@ -43,9 +43,22 @@ val MyInt: Clazz = new Clazz(
     	Assignment(Variable("result"), New(MyInt)),
     	Message(Variable("result"), "init", Plus(Selection(Variable("this"), "value"), Variable("0"))),
     	Variable("result")
+    )),
+    "minus" -> (Seq("result"),
+      Sequence(
+    )),
+    "uminus" -> (Seq("result"),
+      Sequence(
+    )),
+    "times" -> (Seq("result"),
+      Sequence(
+    )),
+    "intValue" -> (Seq("result"),
+      Sequence(
     ))
     // TODO your job: implement the remaining methods
     // hint: use "itimes" to implement "times"
+    // TODO Implement skeleton
   ))
 
   /*
