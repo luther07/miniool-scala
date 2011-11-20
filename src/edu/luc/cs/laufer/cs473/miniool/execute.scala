@@ -88,6 +88,17 @@ object Execute {
       }
       Cell.NULL
     }
+    case If(guard, branchStatement, elseStatement) => {
+      var gvalue = apply(store)(guard)
+      if(gvalue.get.isLeft){
+        apply(store)(branchStatement)
+      }
+      else{
+        apply(store)(elseStatement)
+      }
+      Cell.NULL
+      
+    }
     case New(Clazz(zuper, fields, methods)) => {
       // create an object based on the list of field names and methods
       val fs = Map(fields.map(field => (field, Cell(0))): _*)
