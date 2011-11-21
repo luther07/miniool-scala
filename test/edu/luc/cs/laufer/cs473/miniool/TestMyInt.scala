@@ -1,9 +1,9 @@
 package edu.luc.cs.laufer.cs473.miniool
 
 import junit.framework.TestCase
-import org.scalatest.junit.AssertionsForJUnit
+import org.scalatest.junit.JUnitSuite
 
-class TestMyInt extends TestCase with AssertionsForJUnit {
+class TestMyInt extends TestCase with JUnitSuite {
 
 /*
  * class myInt {
@@ -46,6 +46,9 @@ val MyInt: Clazz = new Clazz(
     )),
     "minus" -> (Seq("result"),
       Sequence(
+        Assignment(Variable("result"), New(MyInt)),
+        Message(Variable("result"), "init", Minus(Selection(Variable("this"), "value"), Variable("0"))),
+        Variable("result")
     )),
     "uminus" -> (Seq("result"),
       Sequence(
