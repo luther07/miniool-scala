@@ -52,6 +52,10 @@ val MyInt: Clazz = new Clazz(
     )),
     "uminus" -> (Seq("result"),
       Sequence(
+        Assignment(Variable("result"), New(MyInt)),
+        Message(Variable("result"), "init", Minus(Selection(Variable("this"), "value"), 
+          Plus(Selection(Variable("this"), "value"), Selection(Variable("this"), "value")))),
+        Variable("result")
     )),
     "times" -> (Seq("result"),
       Sequence(
