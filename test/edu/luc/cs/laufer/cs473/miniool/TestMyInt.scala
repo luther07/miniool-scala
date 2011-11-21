@@ -50,23 +50,24 @@ val MyInt: Clazz = new Clazz(
         Message(Variable("result"), "init", Minus(Selection(Variable("this"), "value"), Variable("0"))),
         Variable("result")
     )),
-    "uminus" -> (Seq("result"),
-      Sequence(
-        Assignment(Variable("result"), New(MyInt)),
-        Message(Variable("result"), "init", Minus(Selection(Variable("this"), "value"), 
-          Plus(Selection(Variable("this"), "value"), Selection(Variable("this"), "value")))),
-        Variable("result")
-    )),
     "times" -> (Seq("result"),
       Sequence(
+        Assignment(Variable("result"), New(MyInt)),
+        Message(Variable("result"), "init", Selection(Variable("this"), "value")),
+        Message(Variable("result"), "itimes", Variable("0")),
+        Variable("result")
     )),
-    "intValue" -> (Seq("result"),
-      Sequence(
-    ))
+    "uminus" -> (Seq(), 
+        Times(Constant(-1), Selection(Variable("this"), "value")
+    )),
+    "intValue" -> (Seq(),
+       Selection(Variable("this"), "value"))
+    
+  ))
     // TODO your job: implement the remaining methods
     // hint: use "itimes" to implement "times"
     // TODO Implement skeleton
-  ))
+  
 
   /*
    * var u, v, x, y, z;
