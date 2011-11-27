@@ -1,9 +1,9 @@
 package edu.luc.cs.laufer.cs473.miniool
 
 import junit.framework.TestCase
-import org.scalatest.junit.JUnitSuite
+import org.scalatest.junit.AssertionsForJUnit
 
-class TestMyInt extends TestCase with JUnitSuite {
+class TestMyInt extends TestCase with AssertionsForJUnit {
 
 /*
  * class myInt {
