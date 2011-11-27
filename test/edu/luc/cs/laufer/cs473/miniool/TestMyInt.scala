@@ -53,17 +53,19 @@ val MyInt: Clazz = new Clazz(
     "times" -> (Seq("result"),
       Sequence(
         Assignment(Variable("result"), New(MyInt)),
-        Message(Variable("result"), "init", Selection(Variable("this"), "value")),
-        Message(Variable("result"), "itimes", Variable("0")),
+        Message(Variable("result"), "init", Message(Variable("this"), "itimes", Variable("0"))),
         Variable("result")
     )),
-    "uminus" -> (Seq(), 
-        Times(Constant(-1), Selection(Variable("this"), "value")
+    "uminus" -> (Seq("result"), 
+        Sequence(
+            Assignment(Variable("result"), New(MyInt)),
+            Message(Variable("result"), "init", Times(Constant(-1),Selection(Variable("this"), "value"))),
+            Variable("result")
     )),
     "intValue" -> (Seq(),
        Selection(Variable("this"), "value"))
     
-  ))
+    ))
     // TODO your job: implement the remaining methods
     // hint: use "itimes" to implement "times"
     // TODO Implement skeleton
@@ -98,7 +100,10 @@ val MyInt: Clazz = new Clazz(
     Assignment(Variable("u"), Message(Variable("z"), "itimes", Constant(8))),
     // TODO your job: replace the assignment to v by the following one:
     // v = z.minus(10).times(4).uminus().times(3).minus(7).intValue();
-    Assignment(Variable("v"), Constant(0))
+//    Assignment(Variable("v"), Constant(0))
+    Assignment(Variable("v"),
+      Message(
+        Message(Message(Message(Message(Message(Variable("z"), "minus", Constant(10)), "times", Constant(4)), "uminus"), "times", Constant(3)), "minus", Constant(7)), "intValue"))
     //Assignment(Variable("v"), Message(Message(Message(Message(Message(Message(Variable("z"), "minus", Constant(10)), "times", 
     //  Constant(4)), "uminus"), "times", Constant(3)), "minus", Constant(7)), "intValue"))
   )
