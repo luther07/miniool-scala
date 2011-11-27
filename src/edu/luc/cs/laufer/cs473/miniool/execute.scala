@@ -92,10 +92,10 @@ object Execute {
 
   def apply(store: Store)(s: Statement): Cell = s match {
     case Constant(value) => Cell(Left(value))
-    case Plus(left, right) => binaryOperation(store, left, right, _+_)
-    case Minus(left, right) => binaryOperation(store, left, right, _-_)
-    case Times(left, right) => binaryOperation(store, left, right, _*_)
-    case Div(left, right) => binaryOperation(store, left, right, _/_)
+    case Plus(left, right) => binaryOperation(store, left, right, _+_) //Addition
+    case Minus(left, right) => binaryOperation(store, left, right, _-_) //Subtraction
+    case Times(left, right) => binaryOperation(store, left, right, _*_) // Multiplication
+    case Div(left, right) => binaryOperation(store, left, right, _/_) // Division
     case Variable(name) => store(name)
     case Assignment(left, right) => {
       val lvalue = apply(store)(left)
@@ -112,7 +112,7 @@ object Execute {
       }
       Cell.NULL
     }
-    case If(guard, branchStatement, elseStatement) => {
+    case If(guard, branchStatement, elseStatement) => { //If Statement
       var gvalue = apply(store)(guard)
       if(gvalue.get.isRight || gvalue.get.left.get != 0){
         apply(store)(branchStatement)
