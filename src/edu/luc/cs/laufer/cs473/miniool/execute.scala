@@ -51,7 +51,12 @@ case class Instance(zuper: Option[Instance], fields: Map[String, Cell], methods:
   require(! methods.contains(null))
 
   def getField(name: String): Cell = {
+    // lookup field in the Instance's first component (field table)
     val findField = fields.get(name)
+    // if you find the field in the current Instance, return its Cell
+    // otherwise, see if the current Instance has a super class
+    // if the current Instance has a super class, attempt to lookup the field in the super class
+    // if the field is not in the current Instance and not in a super class, return NULL
     findField match {
       case Some(x: Cell) => x
       case None => zuper match {
@@ -62,7 +67,12 @@ case class Instance(zuper: Option[Instance], fields: Map[String, Cell], methods:
   }
 
   def getScopedMethod(name: String): ScopedMethod = {
+    // lookup method in the Instance's second component (method table)
     val findMethod = methods.get(name)
+    // if you find the method in the current Instance, return the Method
+    // otherwise, see if the current Instance has a super class
+    // if the current Instance has a super class ,attempt to lookup the method in the super class
+    // if the method is not in the current Instance and not in a super class, return an empty method 
     findMethod match {
       case Some(m: Method) => (this,m) 
       case None => zuper match {
