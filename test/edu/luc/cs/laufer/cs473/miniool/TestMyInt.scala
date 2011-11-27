@@ -99,6 +99,8 @@ val MyInt: Clazz = new Clazz(
     // TODO your job: replace the assignment to v by the following one:
     // v = z.minus(10).times(4).uminus().times(3).minus(7).intValue();
     Assignment(Variable("v"), Constant(0))
+    //Assignment(Variable("v"), Message(Message(Message(Message(Message(Message(Variable("z"), "minus", Constant(10)), "times", 
+    //  Constant(4)), "uminus"), "times", Constant(3)), "minus", Constant(7)), "intValue"))
   )
 
   def testMain() {
