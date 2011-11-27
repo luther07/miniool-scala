@@ -3,6 +3,10 @@ package edu.luc.cs.laufer.cs473.miniool
 import junit.framework.TestCase
 import org.scalatest.junit.AssertionsForJUnit
 
+
+/**
+ * Tests Inheritance designed in execute
+ */
 class TestWithInheritance extends TestCase with AssertionsForJUnit {
 
   /*

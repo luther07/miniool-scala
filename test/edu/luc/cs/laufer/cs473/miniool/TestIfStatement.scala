@@ -3,6 +3,9 @@ package edu.luc.cs.laufer.cs473.miniool
 import junit.framework.TestCase
 import org.scalatest.junit.AssertionsForJUnit
 
+/**
+ * Tests the If Statement from execute
+ */
 class TestIfStatement extends TestCase with AssertionsForJUnit {
 
   val store = Map[String, Cell](

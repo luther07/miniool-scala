@@ -3,6 +3,9 @@ package edu.luc.cs.laufer.cs473.miniool
 import junit.framework.TestCase
 import org.scalatest.junit.AssertionsForJUnit
 
+/**
+ * test using methods
+ */
 class TestWithMethods extends TestCase with AssertionsForJUnit {
 
 /*

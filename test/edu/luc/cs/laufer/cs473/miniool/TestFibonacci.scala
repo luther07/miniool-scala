@@ -3,6 +3,9 @@ package edu.luc.cs.laufer.cs473.miniool
 import junit.framework.TestCase
 import org.scalatest.junit.AssertionsForJUnit
 
+/**
+ * Tests the Fibonacci sequence
+ */
 class TestFibonacci extends TestCase with AssertionsForJUnit {
 
 /*

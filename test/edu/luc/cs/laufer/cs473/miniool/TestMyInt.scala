@@ -3,6 +3,9 @@ package edu.luc.cs.laufer.cs473.miniool
 import junit.framework.TestCase
 import org.scalatest.junit.AssertionsForJUnit
 
+/**
+ * Tests Int computations such as plus minus uminus itimes times and intValue
+ */
 class TestMyInt extends TestCase with AssertionsForJUnit {
 
 /*
