@@ -104,8 +104,6 @@ val MyInt: Clazz = new Clazz(
     Assignment(Variable("v"),
       Message(
         Message(Message(Message(Message(Message(Variable("z"), "minus", Constant(10)), "times", Constant(4)), "uminus"), "times", Constant(3)), "minus", Constant(7)), "intValue"))
-    //Assignment(Variable("v"), Message(Message(Message(Message(Message(Message(Variable("z"), "minus", Constant(10)), "times", 
-    //  Constant(4)), "uminus"), "times", Constant(3)), "minus", Constant(7)), "intValue"))
   )
 
   def testMain() {
